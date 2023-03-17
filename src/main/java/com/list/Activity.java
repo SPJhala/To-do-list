@@ -1,21 +1,28 @@
 package com.list;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 import javax.json.bind.annotation.JsonbProperty;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "activity_db")
+public class Activity extends PanacheEntity {
 
-public class Activity{
-    @JsonbProperty("Activity name")
-    private String name;
-    public Activity(String name) {
-        this.name = name;
-    }
+    @JsonbProperty("Activity_name")
+    @Column
+    public String Activity_name;
 
-    public String getName(){
-        return name;
+    public Activity(){}
+
+    public Activity(String activityName) {
+        this.Activity_name = activityName;
     }
 
     @Override
     public String toString(){
-        return "Activity Name: " + name + "\n";
+        return "Activity Name: " + Activity_name + "\n";
     }
 }
